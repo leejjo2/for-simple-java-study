@@ -28,6 +28,7 @@ dependencies {
     // slf4j & logback
     implementation('org.slf4j:jcl-over-slf4j')
     implementation('ch.qos.logback:logback-classic')
+    implementation('com.fasterxml.jackson.core:jackson-databind:2.13.1')
 
     testCompileOnly 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
