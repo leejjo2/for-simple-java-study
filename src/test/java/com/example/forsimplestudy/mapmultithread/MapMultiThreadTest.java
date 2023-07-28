@@ -1,4 +1,4 @@
-package com.example.forsimplestudy;
+package com.example.forsimplestudy.mapmultithread;
 
 import java.util.Collections;
 import java.util.HashMap;

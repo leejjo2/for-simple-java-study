@@ -1,13 +1,16 @@
-package com.example.forsimplestudy;
+package com.example.forsimplestudy.jsonhandling;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.JsonNodeType;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -53,7 +56,7 @@ class Person {
 }
 
 class JsonExample {
-    public static void main(String[] args) throws JsonProcessingException {
+    public static void main(String[] args) throws IOException {
         Address address1 = new Address();
         address1.setCity("Seoul");
         address1.setStreet("Gangnam-gu");
@@ -74,6 +77,12 @@ class JsonExample {
         String jsonString = person.toJsonString();
         System.out.println(jsonString);
 
+        String directoryName = "/Users/jameslee/IdeaProjects/self-study/java-self-study/for-simple-study/src/test/java/com/example/forsimplestudy/jsonhandling/json-files";
+        if(!Files.isDirectory(Paths.get(directoryName))){
+            Files.createDirectories(Paths.get(directoryName));
+        }
+        Files.write(Paths.get(directoryName + "/person-json"), jsonString.getBytes());
+
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode jsonNode = null;
         try {
@@ -89,6 +98,11 @@ class JsonExample {
             JsonExample.getChild(stringJsonNodeEntry.getKey(), stringJsonNodeEntry.getValue());
         });
         System.out.println(fields);
+
+        Object a = "A";
+        System.out.println(a.getClass().getName());
+        System.out.println(a instanceof String);
+        System.out.println(a instanceof Integer);
 
     }
 

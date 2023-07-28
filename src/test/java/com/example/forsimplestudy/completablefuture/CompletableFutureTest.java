@@ -1,4 +1,4 @@
-package com.example.forsimplestudy;
+package com.example.forsimplestudy.completablefuture;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
