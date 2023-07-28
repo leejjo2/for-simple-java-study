@@ -10,6 +10,7 @@ import lombok.Setter;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -78,7 +79,9 @@ class JsonExample {
         String jsonString = person.toJsonString();
         System.out.println(jsonString);
 
-        String directoryName = "/Users/jameslee/IdeaProjects/self-study/java-self-study/for-simple-study/src/test/java/com/example/forsimplestudy/jsonhandling/json-files";
+        String directoryName = Paths.get("", "src/test/java/com/example/forsimplestudy/jsonhandling/json-directory").toAbsolutePath().toString();
+        System.out.println("test path :: " + directoryName);
+
         if(!Files.isDirectory(Paths.get(directoryName))){
             Files.createDirectories(Paths.get(directoryName));
         }
