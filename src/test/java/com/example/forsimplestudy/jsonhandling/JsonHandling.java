@@ -17,14 +17,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class JsonHandling {
-
-
-    public static void main(String[] args) {
-
-    }
-
-}
 
 @Getter
 @Setter
@@ -85,12 +77,14 @@ class JsonExample {
         if(!Files.isDirectory(Paths.get(directoryName))){
             Files.createDirectories(Paths.get(directoryName));
         }
-        Files.write(Paths.get(directoryName + "/person-json"), jsonString.getBytes());
+
+        String fileJsonString = Files.readString(Path.of(directoryName + "/person-json"));
+        System.out.println("::: fileJsonString :: "+ fileJsonString);
 
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode jsonNode = null;
         try {
-            jsonNode = objectMapper.readValue(jsonString, JsonNode.class);
+            jsonNode = objectMapper.readValue(fileJsonString, JsonNode.class);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
